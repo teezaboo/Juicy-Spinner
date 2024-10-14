@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public ResourceManager ResourceManager;
+    public Pool playerDieEffect;
     public Transform turretHead;
     public Transform TargetDash;
 
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if(ResourceManager.IsStopGame == true) return;
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RotateTurret();
         if(isStopMove == false && isstopTIME == false){
@@ -72,50 +75,28 @@ public class Player : MonoBehaviour
 
             EyeHead.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye));
             bodyRotation.transform.eulerAngles = new Vector3(bodyRotation.transform.eulerAngles.x, bodyRotation.transform.eulerAngles.y, bodyRotation.transform.eulerAngles.z + rotationSpeed);
-            if (Input.GetMouseButtonDown(0) && isPowerZero == false){
+            if (Input.GetMouseButtonDown(0)){
                 rotationSpeed = -addRotationSpeed*2;
-                GetComponent<Animator>().Play("SWORD_UPAnimation");
 
                 isMoving = true;
-
-                t888 = true;
             }
             
-            if (Input.GetMouseButtonDown(1) && isPowerZero == false){
-                if(powerref.fillAmount > 0.1f){
-                    AnimateFillAmount(-0.1f);
-                    rotationSpeed = -addRotationSpeed*2;
+            if (Input.GetMouseButtonDown(1)){
+                rotationSpeed = -addRotationSpeed*2;
                     DashToTarget();
-                }
             }
 
-            if (isMoving && isPowerZero == false)
+            if (isMoving)
             {
                 ChasePlayer(currentMousePosition);
-                    if(powerref.fillAmount > 0f){
-                        AnimateFillAmount(-powerPerAdd);
-                    }else{
-                        isPowerZero = true;
-                    }
             }else{
                 if(rotationSpeed < 0){
                     rotationSpeed += 0.2f;
                 }else{
                     rotationSpeed = 0;
                 }
-                if(isPowerZero == true){
-                    isMoving = false;
-                    animator.Play("SWORD_DROPAnimation");
-                    if(powerref.fillAmount < 1f){
-                        AnimateFillAmount(powerPerAdd * 8);
-                    }else{
-                        isPowerZero = false;
-                    }
-                }else if(powerref.fillAmount <= 1f){
-                        AnimateFillAmount(powerPerAdd * 4);
-                }
             }
-            if (Input.GetMouseButtonUp(0) && isPowerZero == false)
+            if (Input.GetMouseButtonUp(0))
             {
                 // ปล่อยเมาส์: หยุดเคลื่อนที่และหมุน
                 isMoving = false;
@@ -152,8 +133,6 @@ public class Player : MonoBehaviour
 
    public void DashToTarget()
     {
-            if(CoroutineStun != null) StopCoroutine(CoroutineStun);
-        CoroutineStun = StartCoroutine(Stun(0.15f));
         // คำนวณทิศทางการแดช (ทำให้ทิศทางมีขนาด 1 ด้วย .normalized)
         Vector2 direction = (TargetDash.position - transform.position).normalized;
 
@@ -183,19 +162,16 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<MonsterController>().TakeDamage();
         }
+        if (collision.gameObject.CompareTag("Trap"))  // ตรวจว่าชนกับสิ่งก่อสร้าง
+        {
+            enemyAttack();
+        }
     }
     public void enemyAttack(){
         isStopMove = true;
-        StartCoroutine(DIE());
-    }
-    IEnumerator DIE(){
-        manageadie.Play();
-        animator.Play("SWORD_DIEAnimation");
-        yield return new WaitForSeconds(2f);
-        manageagameover.Play();
-        gameover.gameObject.SetActive(true);
-      //  SceneManager.LoadScene("Menu");
+        playerDieEffect.GetPool(transform.position);
         Destroy(gameObject);
+        ResourceManager.GameOver();
     }
     IEnumerator Stun(float i){
         yield return new WaitForSeconds(i);

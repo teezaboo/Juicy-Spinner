@@ -11,7 +11,7 @@ public class SpawnSettings : ScriptableObject
 [System.Serializable]
 public class SpawnTimeSettings
 {
-    public float time; // เวลาที่จะเปลี่ยนค่า
+    public float time = 6; // เวลาที่จะเปลี่ยนค่า
     public float spawnRadius; // รัศมีการสปอน
     public float spawnFrequency; // ความถี่ในการสปอน
     public int numberOfMonsters; // จำนวนมอนสเตอร์ที่จะสปอน

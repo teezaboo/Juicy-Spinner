@@ -16,8 +16,16 @@ MonoBehaviour:
   - time: 0
     spawnRadius: 6
     spawnFrequency: 3
-    numberOfMonsters: 3
+    numberOfMonsters: 1
+  - time: 10
+    spawnRadius: 6
+    spawnFrequency: 2.75
+    numberOfMonsters: 1
   - time: 20
     spawnRadius: 6
     spawnFrequency: 2.5
-    numberOfMonsters: 4
+    numberOfMonsters: 1
+  - time: 30
+    spawnRadius: 6
+    spawnFrequency: 2.25
+    numberOfMonsters: 2

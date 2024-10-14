@@ -1,0 +1,785 @@
+fileFormatVersion: 2
+guid: 61d1b5ede97b3b14a83bd2bb04b98f6a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1360675417294979280
+    second: xScore_0
+  - first:
+      213: -6223655958457796265
+    second: xScore_1
+  - first:
+      213: 8564499267734821049
+    second: xScore_2
+  - first:
+      213: 2853902175370629080
+    second: xScore_3
+  - first:
+      213: 7880319567545430691
+    second: xScore_4
+  - first:
+      213: 2886828806678736633
+    second: xScore_5
+  - first:
+      213: -5730154814065592306
+    second: xScore_6
+  - first:
+      213: 359769529088466409
+    second: xScore_7
+  - first:
+      213: -7155803239119537288
+    second: xScore_8
+  - first:
+      213: 4665315525350230771
+    second: xScore_9
+  - first:
+      213: -7309358670387302205
+    second: xScore_10
+  - first:
+      213: -3048895864963646828
+    second: xScore_11
+  - first:
+      213: -3355850175786823537
+    second: xScore_12
+  - first:
+      213: 4856962132547100256
+    second: xScore_13
+  - first:
+      213: -508905074503548040
+    second: xScore_14
+  - first:
+      213: -9032526144723405792
+    second: xScore_15
+  - first:
+      213: 736937933470739094
+    second: xScore_16
+  - first:
+      213: -2047987441194442515
+    second: xScore_17
+  - first:
+      213: 6474480165700950915
+    second: xScore_18
+  - first:
+      213: 7779182369179188812
+    second: xScore_19
+  - first:
+      213: 426948905217835039
+    second: xScore_20
+  - first:
+      213: -4776840303407386367
+    second: xScore_21
+  - first:
+      213: -3978582765214266743
+    second: xScore_22
+  - first:
+      213: -2323640696822035398
+    second: xScore_23
+  - first:
+      213: 6072370224412594247
+    second: xScore_24
+  - first:
+      213: -7965739188789306249
+    second: xScore_25
+  - first:
+      213: -2041579950819326258
+    second: xScore_26
+  - first:
+      213: -539326020088545201
+    second: xScore_27
+  - first:
+      213: -7059903804063052962
+    second: xScore_28
+  - first:
+      213: -455596182200027389
+    second: xScore_29
+  - first:
+      213: -558203400157635832
+    second: xScore_30
+  - first:
+      213: -1768505103542391651
+    second: xScore_31
+  - first:
+      213: -4474679005101475754
+    second: xScore_32
+  - first:
+      213: 5636494437730685727
+    second: xScore_33
+  - first:
+      213: 5176888987003862733
+    second: xScore_34
+  - first:
+      213: 5089888403928555755
+    second: xScore_35
+  - first:
+      213: -7147026398231029699
+    second: xScore_36
+  - first:
+      213: 7426461110125655254
+    second: xScore_37
+  - first:
+      213: -1296549856539433837
+    second: xScore_38
+  - first:
+      213: -4338722725730199672
+    second: xScore_39
+  - first:
+      213: -2396102464365011776
+    second: xScore_40
+  - first:
+      213: 7417811240320121557
+    second: xScore_41
+  - first:
+      213: 8903816089349450082
+    second: xScore_42
+  - first:
+      213: -4620031457555709504
+    second: xScore_43
+  - first:
+      213: -5634420601742412886
+    second: xScore_44
+  - first:
+      213: -6962780115917970929
+    second: xScore_45
+  - first:
+      213: -4346560015995491478
+    second: xScore_46
+  - first:
+      213: -4916810429879258535
+    second: xScore_47
+  - first:
+      213: 3894746303136753822
+    second: xScore_48
+  - first:
+      213: -5487321240533759608
+    second: xScore_49
+  - first:
+      213: 527064574709562761
+    second: xScore_50
+  - first:
+      213: 5741700393184526251
+    second: xScore_51
+  - first:
+      213: 5929908990853737533
+    second: xScore_52
+  - first:
+      213: -5408300801516981211
+    second: xScore_53
+  - first:
+      213: 6393778535985846641
+    second: xScore_54
+  - first:
+      213: 7771752441746985845
+    second: xScore_55
+  - first:
+      213: 31131106122745718
+    second: xScore_56
+  - first:
+      213: 7182662568814065791
+    second: xScore_57
+  - first:
+      213: 5642082272559803882
+    second: xScore_58
+  - first:
+      213: -1501256781042926839
+    second: xScore_59
+  - first:
+      213: -5221519694949455641
+    second: xScore_60
+  - first:
+      213: -8922389783378767713
+    second: xScore_61
+  - first:
+      213: -5422893965560734883
+    second: xScore_62
+  - first:
+      213: 5627422184056981907
+    second: xScore_63
+  - first:
+      213: 6483884520957954086
+    second: xScore_64
+  - first:
+      213: -881403872105001919
+    second: xScore_65
+  - first:
+      213: 8271689439821857758
+    second: xScore_66
+  - first:
+      213: 3721774079177396756
+    second: xScore_67
+  - first:
+      213: 3881911693279848103
+    second: xScore_68
+  - first:
+      213: 2617888317690040184
+    second: xScore_69
+  - first:
+      213: -1944216730484164109
+    second: xScore_70
+  - first:
+      213: 9148335825263806424
+    second: xScore_71
+  - first:
+      213: 4026522237066032604
+    second: xScore_72
+  - first:
+      213: 8032141192664852268
+    second: xScore_73
+  - first:
+      213: -4105874783823602850
+    second: xScore_74
+  - first:
+      213: 6060533261601930754
+    second: xScore_75
+  - first:
+      213: 3748571058787501058
+    second: xScore_76
+  - first:
+      213: -5851178909166204237
+    second: xScore_77
+  - first:
+      213: 5968693929521624821
+    second: xScore_78
+  - first:
+      213: -1884752429930706534
+    second: xScore_79
+  - first:
+      213: 1031767499602986161
+    second: xScore_80
+  - first:
+      213: 1331958014378344578
+    second: xScore_81
+  - first:
+      213: 8471539555305240899
+    second: xScore_82
+  - first:
+      213: -352316371225855778
+    second: xScore_83
+  - first:
+      213: 4034560334802459330
+    second: xScore_84
+  - first:
+      213: -6457627661577663006
+    second: xScore_85
+  - first:
+      213: -8743975197659030039
+    second: xScore_86
+  - first:
+      213: 4748508633010543413
+    second: xScore_87
+  - first:
+      213: 7911623044349333975
+    second: xScore_88
+  - first:
+      213: -5600441049214649824
+    second: xScore_89
+  - first:
+      213: 237835143397110057
+    second: xScore_90
+  - first:
+      213: 1006716286257240377
+    second: xScore_91
+  - first:
+      213: -3240317238991517905
+    second: xScore_92
+  - first:
+      213: 1265968042295919616
+    second: xScore_93
+  - first:
+      213: 4474309121653024988
+    second: xScore_94
+  - first:
+      213: -5871972332727096560
+    second: xScore_95
+  - first:
+      213: -9007090176553496619
+    second: xScore_96
+  - first:
+      213: -5108545500139440571
+    second: xScore_97
+  - first:
+      213: -1477108034689717346
+    second: xScore_98
+  - first:
+      213: 2181616366211628525
+    second: xScore_99
+  - first:
+      213: 1756418227597182798
+    second: xScore_100
+  - first:
+      213: 667188242896593322
+    second: xScore_101
+  - first:
+      213: -1736745474673847852
+    second: xScore_102
+  - first:
+      213: 6052713123132103428
+    second: xScore_103
+  - first:
+      213: 6565954718779112163
+    second: xScore_104
+  - first:
+      213: 2193714006656572599
+    second: xScore_105
+  - first:
+      213: 8518499631034718676
+    second: xScore_106
+  - first:
+      213: 586165564029541
+    second: xScore_107
+  - first:
+      213: 8309414654586967209
+    second: xScore_108
+  - first:
+      213: -5619000638821444252
+    second: xScore_109
+  - first:
+      213: 955198569109383169
+    second: xScore_110
+  - first:
+      213: 3752519680049611442
+    second: xScore_111
+  - first:
+      213: 7200576964223191723
+    second: xScore_112
+  - first:
+      213: 6359523016663400034
+    second: xScore_113
+  - first:
+      213: 6640847175793085764
+    second: xScore_114
+  - first:
+      213: -548947621642797315
+    second: xScore_115
+  - first:
+      213: 6436922994164909657
+    second: xScore_116
+  - first:
+      213: -8685159469218027077
+    second: xScore_117
+  - first:
+      213: 5905281341406250108
+    second: xScore_118
+  - first:
+      213: 3299770309979489262
+    second: xScore_119
+  - first:
+      213: 983744984836451384
+    second: xScore_120
+  - first:
+      213: -878038030683544111
+    second: xScore_121
+  - first:
+      213: 6848125603186542079
+    second: xScore_122
+  - first:
+      213: 2033721472370176413
+    second: xScore_123
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: xScore_0
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d04976351712e210800000000000000
+      internalID: 1360675417294979280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_1
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75931ef41e121a9a0800000000000000
+      internalID: -6223655958457796265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b85d6415b63bd670800000000000000
+      internalID: 8564499267734821049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_3
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8df4eaa68e81b9720800000000000000
+      internalID: 2853902175370629080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_4
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a2fa1c15e48c5d60800000000000000
+      internalID: 7880319567545430691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_5
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe637d2183101820800000000000000
+      internalID: 2886828806678736633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0830a76e866a70b0800000000000000
+      internalID: -5730154814065592306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9edd3560b782ef400800000000000000
+      internalID: 359769529088466409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87bb0b9fdda71bc90800000000000000
+      internalID: -7155803239119537288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_9
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fa8d9d90c78eb040800000000000000
+      internalID: 4665315525350230771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c0b4a31401ff8a90800000000000000
+      internalID: -7309358670387302205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_11
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a3fa35d5520b5d0800000000000000
+      internalID: -3048895864963646828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: xScore_12
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f805bc09b00ad61d0800000000000000
+      internalID: -3355850175786823537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8ac50601eeb45f14cbc9535f1ff6037d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      xScore_0: 1360675417294979280
+      xScore_1: -6223655958457796265
+      xScore_10: -7309358670387302205
+      xScore_11: -3048895864963646828
+      xScore_12: -3355850175786823537
+      xScore_2: 8564499267734821049
+      xScore_3: 2853902175370629080
+      xScore_4: 7880319567545430691
+      xScore_5: 2886828806678736633
+      xScore_6: -5730154814065592306
+      xScore_7: 359769529088466409
+      xScore_8: -7155803239119537288
+      xScore_9: 4665315525350230771
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

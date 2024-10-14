@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    public float bombDistance = 2f;
+    public float addAngleEyeFollowPlayer = 0f; // ค่าเพิ่มเติมในการหมุน
+    public bool isFollowingPlayer = false; // เพิ่มตัวแปรเพื่อกำหนดว่ามอนสเตอร์จะตามผู้เล่นหรือไม่
+    public Animator animatorBomb;
+    [SerializeField] private Pool _poolBoomb;
+    [SerializeField] private Pool _poolDieMySelf;
+    public float LifeDuration = 5f;
+    public SpriteRenderer spriteRenderer;
+    private Coroutine _lifeCoroutine;
+    [SerializeField] private List<Pool> _poolDie;
+    public SpriteRenderer myBodyImg;
+    public List<Sprite> ImgBody;
+    public int type;
     public Transform EyeHead; // หัวป้อมปืนที่หมุนได้
     public Transform EyeHead2; // หัวป้อมปืนที่หมุนได้
     public float addAngleEye = 0f; // ค่าเพิ่มเติมในการหมุน
@@ -20,7 +33,7 @@ public class MonsterController : MonoBehaviour
     public float AttackDamage = 30f;
     public float AttackForce = 1f;
     private Camera mainCamera;
-    [SerializeField] private GameManagers _gameManagers;
+    [SerializeField] private ResourceManager _gameManagers;
     [SerializeField] private MonsterSpawner _monsterSpawner;
     public List<Shader> shaders;
     public List<SpriteRenderer> sprites;
@@ -28,7 +41,6 @@ public class MonsterController : MonoBehaviour
     private float nextAttackTime;
     private bool isAttackPlayer = false;
     private int minSec = 0;
-    [SerializeField] private Pool _poolDie;
     [SerializeField] private LayerMask _obstacleLayerMask;
     [SerializeField] private float _obstacleCheckCircleRadius;
     [SerializeField] private float _obstacleCheckDistance;
@@ -37,6 +49,8 @@ public class MonsterController : MonoBehaviour
     private float _obstacleAvoidanceCooldown;
     private Vector2 _targetDirection;
     private const float safeDistance = 5f;
+    private Coroutine _CoroutineDelayToBomb;
+    bool bombed = false;
 
     private void Awake()
     {
@@ -51,6 +65,7 @@ public class MonsterController : MonoBehaviour
     {
         if (player == null) return;
 
+        if(_gameManagers.IsStopGame == true) return;
         if (Vector3.Distance(transform.position, player.position) > safeDistance)
         {
             _rigidbody.velocity = Vector2.zero;
@@ -59,11 +74,22 @@ public class MonsterController : MonoBehaviour
 
         FleeAndAvoidObstacles();
         MoveMonster();
+        
+        if (isFollowingPlayer)
+        {
+            Vector3 direction = player.position - transform.position;
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            EyeHead.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye + addAngleEyeFollowPlayer));
+            EyeHead2.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye2 + addAngleEyeFollowPlayer));
+        }
+        else
+        {
+            Vector3 direction = transform.position - player.position;
+            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            EyeHead.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye));
+            EyeHead2.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye2));
+        }
 
-        Vector3 direction = transform.position - player.position;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        EyeHead.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye));
-        EyeHead2.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle + addAngleEye2));
 
         if (isAttackPlayer)
         {
@@ -77,6 +103,21 @@ public class MonsterController : MonoBehaviour
 
     private void OnEnable()
     {
+        if(isFollowingPlayer == true){
+            fleeDistance += 10000;
+        }
+        if(ImgBody.Count > 0){
+            type = Random.Range(0, ImgBody.Count);
+            myBodyImg.sprite = ImgBody[type];
+        }
+        if(spriteRenderer != null){
+            if(_lifeCoroutine != null){
+                StopCoroutine(_lifeCoroutine);
+            }
+            _lifeCoroutine = StartCoroutine(LerpColor());
+        }else{
+            _CoroutineDelayToBomb = StartCoroutine(DelayToBomb());
+        }
         Hp = MaxHp;
         moveSpeed = maxMoveSpeed;
         if (shaders.Count > 0)
@@ -89,15 +130,62 @@ public class MonsterController : MonoBehaviour
         }
     }
 
+    private IEnumerator LerpColor()
+    {
+        float elapsedTime = 0f;
+        Color startColor = Color.white;
+        Color endColor = Color.black;
+
+        while (elapsedTime < LifeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            spriteRenderer.color = Color.Lerp(startColor, endColor, elapsedTime / LifeDuration);
+            yield return null;
+        }
+        _poolDieMySelf.GetPool(transform.position);
+        gameObject.SetActive(false);
+    }
+    private IEnumerator DelayToBomb()
+    {
+        yield return new WaitForSeconds(LifeDuration);
+        StartCoroutine(Bomb());
+    }
+    private IEnumerator Bomb()
+    {
+        bombed = true;
+        animatorBomb.Play("monsterBombAni");
+        yield return new WaitForSeconds(1f);
+        _poolBoomb.GetPool(transform.position);
+        TakeDamage();
+    }
+
     private void FleeAndAvoidObstacles()
     {
+        if(ImgBody.Count == 0 && bombed == false){
+            if (Vector3.Distance(transform.position, player.position) > bombDistance) {
+                if(_CoroutineDelayToBomb != null){
+                    StopCoroutine(_CoroutineDelayToBomb);
+                }
+                 StartCoroutine(Bomb());
+            }
+        }
         if (Vector3.Distance(transform.position, player.position) > fleeDistance)
         {
             _rigidbody.velocity = Vector2.zero;
             return;
         }
 
-        Vector3 direction = (transform.position - player.position).normalized;
+        Vector3 direction;
+
+        if (isFollowingPlayer)
+        {
+            direction = (player.position - transform.position).normalized; // ตามผู้เล่น
+        }
+        else
+        {
+            direction = (transform.position - player.position).normalized; // หนีจากผู้เล่น
+        }
+
         _targetDirection = direction;
 
         var contactFilter = new ContactFilter2D();
@@ -125,20 +213,41 @@ public class MonsterController : MonoBehaviour
             _targetDirection.Normalize();
             break;
         }
-        _obstacleAvoidanceCooldown -= Time.deltaTime;
 
-        if (transform.position.x < player.position.x && transform.localScale.x < 0)
+        _obstacleAvoidanceCooldown -= Time.deltaTime;
+        if (isFollowingPlayer)
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
-            EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            // ตามผู้เล่น
+            if (transform.position.x > player.position.x && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
+                EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            }
+            else if (transform.position.x < player.position.x && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
+                EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            }
         }
-        else if (transform.position.x > player.position.x && transform.localScale.x > 0)
+        else
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
-            EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            // หนีจากผู้เล่น
+            if (transform.position.x < player.position.x && transform.localScale.x < 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
+                EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            }
+            else if (transform.position.x > player.position.x && transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+                EyeHead.transform.localScale = new Vector3(-EyeHead.transform.localScale.x, EyeHead.transform.localScale.y, EyeHead.transform.localScale.z);
+                EyeHead2.transform.localScale = new Vector3(-EyeHead2.transform.localScale.x, EyeHead2.transform.localScale.y, EyeHead2.transform.localScale.z);
+            }
         }
+
     }
 
     private void MoveMonster()
@@ -146,14 +255,14 @@ public class MonsterController : MonoBehaviour
         _rigidbody.velocity = _targetDirection * moveSpeed;
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (playerScr != null)
-        {
             if (_gameManagers.IsStopGame == true) return;
+        if(ImgBody.Count == 0){
             if (other.gameObject.CompareTag("Player"))
             {
-                playerScr.enemyAttack();
+                TakeDamage();
             }
         }
     }
@@ -166,10 +275,48 @@ public class MonsterController : MonoBehaviour
 
     public void TakeDamage()
     {
-        _poolDie.GetPool(transform.position);
+        if(_poolBoomb != null){
+            _poolBoomb.GetPool(transform.position);
+        }else{
+            _poolDie[type].GetPool(transform.position);
+            _gameManagers.AddDieCount();
+            _gameManagers.AddScore(10);
+            _gameManagers.AddXScore();
+            _gameManagers._bloodXScore.color = GetColor();
+        }
     //    _monsterSpawner.DeMonster();
-        _gameManagers.DieCount++;
         gameObject.SetActive(false);
+    }
+
+    public Color GetColor(){
+        switch(type){
+            case 0:
+                return new Color(89/255f, 255/255f, 0/255f, 1);
+            case 1:
+                return new Color(255/255f, 217/255f, 0/255f, 1);
+            case 2:
+                return new Color(255/255f, 0/255f, 51/255f, 1);
+            case 3:
+                return new Color(148/255f, 0/255f, 255/255f, 1);
+            case 4:
+                return new Color(190/255f, 255/255f, 131/255f, 1);
+            case 5:
+                return new Color(255/255f, 244/255f, 119/255f, 1);
+            case 6:
+                return new Color(255/255f, 169/255f, 0/255f, 1);
+            case 7:
+                return new Color(255/255f, 218/255f, 185/255f, 1);
+            case 8:
+                return new Color(236/255f, 255/255f, 59/255f, 1);
+            case 9:
+                return new Color(250/255f, 218/255f, 94/255f, 1);
+            case 10:
+                return new Color(255/255f, 0/255f, 80/255f, 1);
+            case 11:
+                return new Color(255/255f, 13/255f, 0/255f, 1);
+            default:
+                return spriteRenderer.color;
+        }
     }
 
     public void KnockBack(Vector3 knockbackPosition, float knockbackPower)
