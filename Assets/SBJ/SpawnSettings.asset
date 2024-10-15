@@ -13,19 +13,309 @@ MonoBehaviour:
   m_Name: SpawnSettings
   m_EditorClassIdentifier: 
   timeSettings:
-  - time: 0
-    spawnRadius: 6
-    spawnFrequency: 3
+  - spawnFrequency: 3
     numberOfMonsters: 1
-  - time: 10
-    spawnRadius: 6
-    spawnFrequency: 2.75
+    RateFruitSpawn: 100
+    RateBombSpawn: 0
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.9
     numberOfMonsters: 1
-  - time: 20
-    spawnRadius: 6
-    spawnFrequency: 2.5
+    RateFruitSpawn: 99
+    RateBombSpawn: 1
+    RateTrapSpawn: 100
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.8
     numberOfMonsters: 1
-  - time: 30
-    spawnRadius: 6
-    spawnFrequency: 2.25
+    RateFruitSpawn: 98
+    RateBombSpawn: 2
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.7
+    numberOfMonsters: 1
+    RateFruitSpawn: 97
+    RateBombSpawn: 3
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.6
+    numberOfMonsters: 1
+    RateFruitSpawn: 96
+    RateBombSpawn: 4
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.5
+    numberOfMonsters: 1
+    RateFruitSpawn: 95
+    RateBombSpawn: 5
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.4
     numberOfMonsters: 2
+    RateFruitSpawn: 94
+    RateBombSpawn: 6
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.3
+    numberOfMonsters: 2
+    RateFruitSpawn: 93
+    RateBombSpawn: 7
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.2
+    numberOfMonsters: 2
+    RateFruitSpawn: 92
+    RateBombSpawn: 8
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2.1
+    numberOfMonsters: 2
+    RateFruitSpawn: 91
+    RateBombSpawn: 9
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 90
+    RateBombSpawn: 10
+    RateTrapSpawn: 0
+    RateJokerSpawn: 0
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 89
+    RateBombSpawn: 11
+    RateTrapSpawn: 1
+    RateJokerSpawn: 1
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 88
+    RateBombSpawn: 12
+    RateTrapSpawn: 2
+    RateJokerSpawn: 1
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 87
+    RateBombSpawn: 13
+    RateTrapSpawn: 3
+    RateJokerSpawn: 1
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 86
+    RateBombSpawn: 14
+    RateTrapSpawn: 4
+    RateJokerSpawn: 2
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 85
+    RateBombSpawn: 15
+    RateTrapSpawn: 5
+    RateJokerSpawn: 2
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 85
+    RateBombSpawn: 14
+    RateTrapSpawn: 6
+    RateJokerSpawn: 3
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 84
+    RateBombSpawn: 14
+    RateTrapSpawn: 7
+    RateJokerSpawn: 3
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 84
+    RateBombSpawn: 13
+    RateTrapSpawn: 8
+    RateJokerSpawn: 4
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 84
+    RateBombSpawn: 14
+    RateTrapSpawn: 9
+    RateJokerSpawn: 4
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 85
+    RateBombSpawn: 15
+    RateTrapSpawn: 10
+    RateJokerSpawn: 5
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 84.5
+    RateBombSpawn: 15
+    RateTrapSpawn: 10.5
+    RateJokerSpawn: 5.5
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 84
+    RateBombSpawn: 15
+    RateTrapSpawn: 11
+    RateJokerSpawn: 6
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 83.5
+    RateBombSpawn: 15
+    RateTrapSpawn: 11.5
+    RateJokerSpawn: 6.5
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 83
+    RateBombSpawn: 15
+    RateTrapSpawn: 12
+    RateJokerSpawn: 7
+  - spawnFrequency: 2
+    numberOfMonsters: 2
+    RateFruitSpawn: 82.5
+    RateBombSpawn: 15
+    RateTrapSpawn: 12.5
+    RateJokerSpawn: 7.5
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 82
+    RateBombSpawn: 15
+    RateTrapSpawn: 13
+    RateJokerSpawn: 8
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 81.5
+    RateBombSpawn: 15
+    RateTrapSpawn: 13.5
+    RateJokerSpawn: 8.5
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 81
+    RateBombSpawn: 15
+    RateTrapSpawn: 14
+    RateJokerSpawn: 9
+  - spawnFrequency: 2
+    numberOfMonsters: 3
+    RateFruitSpawn: 80.5
+    RateBombSpawn: 15
+    RateTrapSpawn: 14.5
+    RateJokerSpawn: 9.5
+  - spawnFrequency: 2
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 15
+    RateTrapSpawn: 15
+    RateJokerSpawn: 10
+  - spawnFrequency: 1.95
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 14.5
+    RateTrapSpawn: 15
+    RateJokerSpawn: 10.5
+  - spawnFrequency: 1.9
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 14
+    RateTrapSpawn: 15
+    RateJokerSpawn: 11
+  - spawnFrequency: 1.85
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 13.5
+    RateTrapSpawn: 15
+    RateJokerSpawn: 11.5
+  - spawnFrequency: 1.8
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 13
+    RateTrapSpawn: 15
+    RateJokerSpawn: 12
+  - spawnFrequency: 1.75
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 12.5
+    RateTrapSpawn: 15
+    RateJokerSpawn: 12.5
+  - spawnFrequency: 1.7
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 12
+    RateTrapSpawn: 15
+    RateJokerSpawn: 13
+  - spawnFrequency: 1.65
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 11.5
+    RateTrapSpawn: 15
+    RateJokerSpawn: 13.5
+  - spawnFrequency: 1.6
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 11
+    RateTrapSpawn: 15
+    RateJokerSpawn: 14
+  - spawnFrequency: 1.55
+    numberOfMonsters: 4
+    RateFruitSpawn: 80
+    RateBombSpawn: 10.5
+    RateTrapSpawn: 15
+    RateJokerSpawn: 14.5
+  - spawnFrequency: 1.5
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 10
+    RateTrapSpawn: 15
+    RateJokerSpawn: 15
+  - spawnFrequency: 1.48
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 10.5
+    RateTrapSpawn: 15.5
+    RateJokerSpawn: 15.5
+  - spawnFrequency: 1.46
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 11
+    RateTrapSpawn: 16
+    RateJokerSpawn: 16
+  - spawnFrequency: 1.44
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 11.5
+    RateTrapSpawn: 16.5
+    RateJokerSpawn: 16.5
+  - spawnFrequency: 1.42
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 12
+    RateTrapSpawn: 17
+    RateJokerSpawn: 17
+  - spawnFrequency: 1.4
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 12.5
+    RateTrapSpawn: 17.5
+    RateJokerSpawn: 17.5
+  - spawnFrequency: 1.38
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 13
+    RateTrapSpawn: 18
+    RateJokerSpawn: 18
+  - spawnFrequency: 1.36
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 13.5
+    RateTrapSpawn: 18.5
+    RateJokerSpawn: 18.5
+  - spawnFrequency: 1.34
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 14
+    RateTrapSpawn: 19
+    RateJokerSpawn: 19
+  - spawnFrequency: 1.3
+    numberOfMonsters: 5
+    RateFruitSpawn: 80
+    RateBombSpawn: 14.5
+    RateTrapSpawn: 19.5
+    RateJokerSpawn: 19.5
+  - spawnFrequency: 1.3
+    numberOfMonsters: 6
+    RateFruitSpawn: 80
+    RateBombSpawn: 15
+    RateTrapSpawn: 20
+    RateJokerSpawn: 20

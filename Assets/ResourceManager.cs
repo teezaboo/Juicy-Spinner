@@ -6,6 +6,10 @@ using TMPro;
 
 public class ResourceManager : MonoBehaviour
 {
+    public GameOverManager GameOverManager;
+    public GameObject settingGame;
+    public List<Sprite> ListImgDiff;
+    public Image ImgDiff;
     public GameObject gameover;
     public Image _bloodXScore;
         [SerializeField] private TextMeshProUGUI _dieText;
@@ -23,7 +27,7 @@ public class ResourceManager : MonoBehaviour
     public int Score = 0;
         public int wave = 1;
         public int DieCount = 0;
-    [SerializeField] private int xScore = 0;
+    public int xScore = 0;
     [SerializeField] private Animator animatorAddScore;
     [SerializeField] private Animator animatorXScore;
     [SerializeField] private List<TextMeshProUGUI> _textHr;
@@ -35,6 +39,13 @@ public class ResourceManager : MonoBehaviour
     public int sec = 0;
     public int minSec = 0;
 
+    public int _EZinWave = 0;
+    public int _NormalinWave = 0;
+    public int _BadinWave = 0;
+    public int _HardinWave = 0;
+    public int _VeryHardinWave = 0;
+    public int _SuperHardinWave = 0;
+
     void Awake(){
         _sumScoreText.text = _sumScore.ToString();
         _xScoreObj.SetActive(false);
@@ -44,25 +55,60 @@ public class ResourceManager : MonoBehaviour
             item.text = "WAVE "+wave;
         }
     }
+    public void AddWave(){
+        wave++;
+        foreach (var item in _waveText){
+            item.text = "WAVE "+wave;
+        }
+        if(wave < _NormalinWave){
+            ImgDiff.sprite = ListImgDiff[0];
+        }else if(wave < _BadinWave){
+            ImgDiff.sprite = ListImgDiff[1];
+        }else if(wave < _HardinWave){
+            ImgDiff.sprite = ListImgDiff[2];
+        }else if(wave < _VeryHardinWave){
+            ImgDiff.sprite = ListImgDiff[3];
+        }else if(wave < _SuperHardinWave){
+            ImgDiff.sprite = ListImgDiff[4];
+        }else if(wave >= _SuperHardinWave){
+            ImgDiff.sprite = ListImgDiff[5];
+        }
+    }
     public void AddDieCount(){
         _dieCount++;
         _dieText.text = "n" + _dieCount;
     }
 
     public void GameOver(){
-        IsStopGame = true;
         _xScoreObj.SetActive(false);
         StartCoroutine(GameOver2());
     }
     IEnumerator GameOver2(){
         yield return new WaitForSeconds(2f);
         gameover.gameObject.SetActive(true);
+        IsStopGame = true;
+        GameOverManager.GameOverStart();
+    }
+    public void SettingGame(){
+            IsStopGame = !IsStopGame;
+            if (IsStopGame)
+            {
+                settingGame.SetActive(true);
+            }
+            else
+            {
+                settingGame.SetActive(false);
+            }
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SettingGame();
+        }
         if(IsStopGame == true) return;
         if(_xScoreObj.activeSelf){
-            _xScoreBar.fillAmount -= 0.006f;
+            _xScoreBar.fillAmount -= 0.009f;
             if(_xScoreBar.fillAmount <= 0){
                 
                 xScore = 0;
@@ -147,26 +193,20 @@ public class ResourceManager : MonoBehaviour
                 }
             }
         }
-    }
-    public void AddSumScore()
+    }    public int AddScore(int addScore)
     {
-        if(Score == 0) return;
+        Score += addScore * (xScore);
+        int iScore = Score;
         _sumScore += Score;
-        Score = 0;
         _sumScoreText.text = _sumScore.ToString();
         animatorAddScore.Play("addScore", -1, 0);
         animatorAddScore.Play("addScore");
-        _xScoreObj.SetActive(false);
-    }
-
-    public void AddScore(int addScore = 0)
-    {
-        if(addScore == 0) return;
-        Score += addScore * xScore;
-        AddSumScore();
+        Score = 0;
+        return iScore;
     }
     public void AddXScore()
     {
+        Debug.Log("xScore: " + xScore);
         _xScoreBar.fillAmount = 1f;
         xScore++;
         foreach (var item in _textXScore){

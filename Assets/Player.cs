@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Pool DefinSoundEffect;
+    public Pool PlayerDieSound;
+    public float addAngleSpark = 0;
+    public Pool PoolSparks;
     public ResourceManager ResourceManager;
     public Pool playerDieEffect;
     public Transform turretHead;
@@ -24,7 +28,6 @@ public class Player : MonoBehaviour
     public float bounceForce = 5f;  // ปรับค่าแรงที่เด้ง
     private Rigidbody2D rb;
     public float addAngleEye = 0f; // ค่าเพิ่มเติมในการหมุน
-    public bool isstopTIME = false;
     public GameObject gameover;
     public AudioSource manageadie;
     public AudioSource manageagameover;
@@ -51,9 +54,6 @@ public class Player : MonoBehaviour
 
     public float ScaleSize = 2.8f;
     Coroutine CoroutineStun;
-    public void SetisstopTIME (bool i){
-        isstopTIME = i;
-    }
     private void Start()
     {
         rotationSpeed = 0;
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         if(ResourceManager.IsStopGame == true) return;
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RotateTurret();
-        if(isStopMove == false && isstopTIME == false){
+        if(isStopMove == false && ResourceManager.IsStopGame == false){
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f; // ตั้งค่า z ให้เป็น 0 เพื่อทำให้ป้อมปืนหมุนในระนาบ 2D
 
@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))  // ตรวจว่าชนกับสิ่งก่อสร้าง
         {
             if(CoroutineStun != null) StopCoroutine(CoroutineStun);
+            DefinSoundEffect.GetPool(transform.position);
             CoroutineStun = StartCoroutine(Stun(0.15f));
             // หาทิศทางการเด้ง (ในทิศตรงกันข้ามกับที่ชน)
             rb.velocity = Vector2.zero;
@@ -157,10 +158,18 @@ public class Player : MonoBehaviour
             
             // เพิ่มแรงเด้ง
             rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
-        }
-        if (collision.gameObject.CompareTag("monster"))  // ตรวจว่าชนกับสิ่งก่อสร้าง
-        {
-            collision.gameObject.GetComponent<MonsterController>().TakeDamage();
+            if (collision.contacts.Length > 0)  // ตรวจสอบว่ามีจุดสัมผัสหรือไม่
+            {
+                Vector3 contactPoint = collision.contacts[0].point;  // ตำแหน่งจุดที่ชนกัน
+
+                // คำนวณมุมที่ทำให้ออบเจกต์หันหน้าเข้าหาออบเจกต์ที่เราต้องการ
+                Vector3 directionToTarget = (transform.position - (Vector3)contactPoint).normalized;  // หาทิศทางจากจุดชนไปยัง target
+                float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;  // คำนวณมุมที่ต้องหมุน
+                Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);  // หมุนรอบแกน Z ใน 2D
+
+                // สปอนออบเจกต์พร้อมกับการหมุนที่กำหนด
+                PoolSparks.GetPool(contactPoint, rotation.eulerAngles + new Vector3(0, 0, addAngleSpark));
+            }
         }
         if (collision.gameObject.CompareTag("Trap"))  // ตรวจว่าชนกับสิ่งก่อสร้าง
         {
@@ -170,6 +179,8 @@ public class Player : MonoBehaviour
     public void enemyAttack(){
         isStopMove = true;
         playerDieEffect.GetPool(transform.position);
+
+        PlayerDieSound.GetPool(transform.position);
         Destroy(gameObject);
         ResourceManager.GameOver();
     }

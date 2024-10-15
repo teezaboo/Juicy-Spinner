@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonsterController : MonoBehaviour
 {
+    public RandomPoolAudio DieSoundEffect;
+    public Pool_TextDamage Pool_TextDamage;
+    public bool isJoker = false;
     public float bombDistance = 2f;
     public float addAngleEyeFollowPlayer = 0f; // ค่าเพิ่มเติมในการหมุน
     public bool isFollowingPlayer = false; // เพิ่มตัวแปรเพื่อกำหนดว่ามอนสเตอร์จะตามผู้เล่นหรือไม่
@@ -106,16 +109,14 @@ public class MonsterController : MonoBehaviour
         if(isFollowingPlayer == true){
             fleeDistance += 10000;
         }
-        if(ImgBody.Count > 0){
+        if(ImgBody.Count > 0 || isJoker == true){
             type = Random.Range(0, ImgBody.Count);
             myBodyImg.sprite = ImgBody[type];
         }
-        if(spriteRenderer != null){
-            if(_lifeCoroutine != null){
-                StopCoroutine(_lifeCoroutine);
-            }
+        if(spriteRenderer != null || isJoker){
+            spriteRenderer.color = Color.white;
             _lifeCoroutine = StartCoroutine(LerpColor());
-        }else{
+        }else if(isJoker == false){
             _CoroutineDelayToBomb = StartCoroutine(DelayToBomb());
         }
         Hp = MaxHp;
@@ -142,11 +143,14 @@ public class MonsterController : MonoBehaviour
             spriteRenderer.color = Color.Lerp(startColor, endColor, elapsedTime / LifeDuration);
             yield return null;
         }
-        _poolDieMySelf.GetPool(transform.position);
+            _poolDieMySelf.GetPool(transform.position);
         gameObject.SetActive(false);
+            DieSoundEffect.RandomPool(transform.position);
+        
     }
     private IEnumerator DelayToBomb()
     {
+        animatorBomb.Play("idle2");
         yield return new WaitForSeconds(LifeDuration);
         StartCoroutine(Bomb());
     }
@@ -160,8 +164,8 @@ public class MonsterController : MonoBehaviour
     }
 
     private void FleeAndAvoidObstacles()
-    {
-        if(ImgBody.Count == 0 && bombed == false){
+    {/*
+        if(ImgBody.Count == 0 && bombed == false && isJoker == false){
             if (Vector3.Distance(transform.position, player.position) > bombDistance) {
                 if(_CoroutineDelayToBomb != null){
                     StopCoroutine(_CoroutineDelayToBomb);
@@ -169,6 +173,7 @@ public class MonsterController : MonoBehaviour
                  StartCoroutine(Bomb());
             }
         }
+        */
         if (Vector3.Distance(transform.position, player.position) > fleeDistance)
         {
             _rigidbody.velocity = Vector2.zero;
@@ -259,12 +264,10 @@ public class MonsterController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
             if (_gameManagers.IsStopGame == true) return;
-        if(ImgBody.Count == 0){
             if (other.gameObject.CompareTag("Player"))
             {
                 TakeDamage();
             }
-        }
     }
 
     IEnumerator Attacked(float delay)
@@ -275,14 +278,18 @@ public class MonsterController : MonoBehaviour
 
     public void TakeDamage()
     {
-        if(_poolBoomb != null){
+        if(isJoker){
+            _poolBoomb.GetPool(transform.position);
+        }else if(_poolBoomb != null){
             _poolBoomb.GetPool(transform.position);
         }else{
             _poolDie[type].GetPool(transform.position);
             _gameManagers.AddDieCount();
-            _gameManagers.AddScore(10);
             _gameManagers.AddXScore();
+                Pool_TextDamage.GetPool(transform.position, "+" + ((10*(_gameManagers.xScore)).ToString()));
+            _gameManagers.AddScore(10);
             _gameManagers._bloodXScore.color = GetColor();
+            DieSoundEffect.RandomPool(transform.position);
         }
     //    _monsterSpawner.DeMonster();
         gameObject.SetActive(false);

@@ -19,7 +19,7 @@ public class Pool : MonoBehaviour
             childInPool.name =  transform.GetChild(0).name.Substring(0, transform.GetChild(0).name.Length - 3) + "("  + (transform.childCount) + ")";
         }
     }
-    public void GetPool(Vector3 position = default(Vector3))
+    public void GetPool(Vector3 position = default(Vector3), Vector3 rotation = default(Vector3))
     {
         if(_refIndex >= transform.childCount)
         {
@@ -34,6 +34,9 @@ public class Pool : MonoBehaviour
             {
                 childInPool.GetComponent<BackToPool>().SetPool(this.gameObject);
                 childInPool.GetComponent<BackToPool>().timeToBack();
+            }
+            if(rotation != default(Vector3)){
+                childInPool.transform.rotation = Quaternion.Euler(rotation);
             }
         }else
         {
@@ -54,6 +57,9 @@ public class Pool : MonoBehaviour
                 if(childInPool.GetComponent<BackToPool>() != null){
                     childInPool.GetComponent<BackToPool>().SetPool(this.gameObject);
                 }
+            if(rotation != default(Vector3)){
+                childInPool.transform.rotation = Quaternion.Euler(rotation);
+            }
                 if(_isAutoBack == true)
                 {
                     childInPool.GetComponent<BackToPool>().SetPool(this.gameObject);
@@ -65,6 +71,9 @@ public class Pool : MonoBehaviour
                 childInPool.SetActive(true);
                 childInPool.transform.SetParent(transform);
                 childInPool.name =  transform.GetChild(0).name.Substring(0, transform.GetChild(0).name.Length - 3) + "("  + (transform.childCount) + ")";
+            if(rotation != default(Vector3)){
+                childInPool.transform.rotation = Quaternion.Euler(rotation);
+            }
                 if(_isAutoBack == true)
                 {
                     childInPool.GetComponent<BackToPool>().SetPool(this.gameObject);
